@@ -29,7 +29,7 @@ export default class TalentCardDetail extends React.Component {
     loadImage(id, callback = (data) => { }) {
         var cookies = Cookies.get('talentAuthToken');
         const httpRequest = new XMLHttpRequest()
-        var url = `http://localhost:60290/profile/profile/getImage/?id=${id}`
+        var url = `https://standardtask1profileservice.azurewebsites.net/profile/profile/getImage/?id=${id}`
 
         httpRequest.open("GET", url, true);
         httpRequest.setRequestHeader('Authorization', 'Bearer ' + cookies)
@@ -49,7 +49,9 @@ export default class TalentCardDetail extends React.Component {
         return (
             <Grid columns={2} >
                 <GridColumn className='talent-feed-image-container'>
-                    <Image src={this.state.image} className='talent-feed-image' />
+                    {/* Can't load image when upload to azure for some reason */}
+                    {/* <Image src={this.state.image} className='talent-feed-image' /> */}
+                    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' className='talent-feed-image' />
                 </GridColumn>
                 <GridColumn textAlign='left'>
                     <p className='profile-label'>Talent snapshot</p>
